@@ -5,9 +5,10 @@ import AuthRouter from "./Routes/Auth.js";
 import HotelRouter from "./Routes/Hotel.js";
 import RoomRouter from "./Routes/Room.js";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import { Resgister } from "./Controllers/Auth.js";
 const app = express();
-
+app.use(cookieParser());
 app.use(express.json());
 
 app.use(cors());
