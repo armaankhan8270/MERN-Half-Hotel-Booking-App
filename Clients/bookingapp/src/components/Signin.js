@@ -2,9 +2,9 @@ import axios from "axios";
 import React, { useState } from "react";
 
 const Signin = () => {
-  const [username, setusername] = useState("");
-  const [password, setpassword] = useState("");
-  const LoginInfo = { username, password };
+  const [Loginusername, setusername] = useState("");
+  const [Loginpassword, setpassword] = useState("");
+  const LoginInfo = { Loginusername, Loginpassword };
   const Login = async () => {
     axios
       .post("http://localhost:3001/api/auth/login", LoginInfo)
@@ -15,7 +15,7 @@ const Signin = () => {
   };
   return (
     <>
-      <div className="home grid text-black justify-center text-white">
+      <div className="home grid text-black justify-center text-wite">
         <div className="bg-black w-[450px] rounded h-[700px] mt-[91px] ">
           <div className=" w-[314px]  border-[#333333] rounded-lg h-[378px] m-[64px]">
             <h1 className="text-3xl pt-1 h-9"> Sign In</h1>
@@ -24,14 +24,14 @@ const Signin = () => {
               className="mt-[28px] text-sm pl-4  h-12 rounded bg-white w-[310px] outline-none shadow-lg"
               placeholder="username"
               onChange={(e) => setusername(e.target.value)}
-              value={username}
+              value={Loginusername}
             />
             <input
               type="password"
               className="mt-[28px] text-sm pl-4 h-12 rounded bg-white w-[310px] outline-none shadow-lg"
               placeholder="Password"
               onChange={(e) => setpassword(e.target.value)}
-              value={password}
+              value={Loginpassword}
             />
             <button
               onClick={Login}

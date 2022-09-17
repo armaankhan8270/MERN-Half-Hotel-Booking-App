@@ -20,19 +20,21 @@ function App() {
   // console.log(UserRegister);
   const Resgister = () => {
     axios
-      .post("/auth/register", UserRegister)
+      .post("http://localhost:3001/api/auth/register", UserRegister)
       .then((e) => {
-        console.log(e);
+        console.log(e + "register");
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(error.response.data);
+      });
   };
 
   return (
     <div className="App">
       <div className="text-3xl justify-center items-center pl-[30%] shadow-lg gap-y-4 m-12 grid grid-cols-1">
         <input
-          onChange={(e) => setusername(e.target.value)}
           type="text"
+          onChange={(e) => setusername(e.target.value)}
           value={username}
           className="border- shadow-xl border-slate-600 w-80  "
           placeholder="username"
@@ -55,7 +57,7 @@ function App() {
 
       <h1>a{Error}</h1>
       <button onClick={Resgister}>Send</button>
-      <button onClick={getdata}>{Data}sss</button>
+      {/* <button onClick={getdata}>{Data}sss</button> */}
       {Hotel
         ? Hotel.map((item, id) => {
             return (
