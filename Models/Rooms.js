@@ -14,7 +14,7 @@ const RoomSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    maxPepople: {
+    maxPepole: {
       type: Number,
       required: true,
     },
