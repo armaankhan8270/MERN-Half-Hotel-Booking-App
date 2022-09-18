@@ -50,17 +50,15 @@ export const GetAllHotel = async (req, res, next) => {
     next(err);
   }
 };
-export const CountBycities = async (req, res, next) => {
+export const countByCity = async (req, res, next) => {
   const cities = req.query.cities.split(",");
-  //code for updating schema data into mongodb
   try {
     const list = await Promise.all(
       cities.map((city) => {
-        Hotel.countDocuments({ city: city });
+        return Hotel.find({ city: city });
       })
     );
-
-    res.send(list);
+    res.status(200).json(list);
   } catch (err) {
     next(err);
   }

@@ -1,6 +1,6 @@
 import express from "express";
 import {
-  CountBycities,
+  countByCity,
   CreateHotel,
   DeleteHotel,
   GetAllHotel,
@@ -17,9 +17,11 @@ router.put("/:id", UpdateHotel);
 //Delete
 router.delete("/:id", DeleteHotel);
 //get
-router.get("/:id", GetHotel);
+router.get("/find/:id", GetHotel);
 //get All
 router.get("/", GetAllHotel);
-router.get("/countBycity", CountBycities);
+router.get("/countBycity", countByCity);
 
 export default router;
+
+//http://localhost:3001/api/hotel/countBycity?cities=london

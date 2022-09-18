@@ -5,6 +5,7 @@ import { useState } from "react";
 import Signin from "./components/Signin";
 import Register from "./components/Register";
 import Navbar from "./components/Navbar";
+import SearchHotel from "./components/SearchHotel";
 function App() {
   const [username, setusername] = useState("");
   const [email, setemail] = useState("");
@@ -13,21 +14,22 @@ function App() {
   const { getHotel } = useStateHotels();
 
   const UserRegister = { username, email, password };
-  const Resgister = () => {
+  const Resgisters = () => {
     axios
-      .post("http://localhost:3001/api/auth/register", UserRegister)
+      .get("http://localhost:3001/api/hotel/countByCity?cities=london")
       .then((e) => {
-        console.log(e + "register");
+        console.log(e);
       })
       .catch((error) => {
-        console.log(error.response.data);
+        console.log(error);
       });
   };
 
   return (
     <div className="App">
-      <Navbar />
-      <Register />
+      {/* <Register /> */}
+      <SearchHotel />
+      <button onClick={Resgisters}>GEt</button>
     </div>
   );
 }
