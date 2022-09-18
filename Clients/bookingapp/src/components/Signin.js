@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useStateHotels } from "../context/Allapi";
+import Home from "./Home";
+import Register from "./Register";
 
 const Signin = () => {
   // const [IsLogin, setIsLogin] = useState(false);
@@ -27,7 +29,7 @@ const Signin = () => {
   return (
     <>
       {!IsLogin ? (
-        <div className="home grid text-black justify-center text-wite">
+        <div className="home grid text-black justify-center text-wite mt-12">
           <div className="bg-black w-[450px] rounded h-[700px] mt-[91px] ">
             <div className=" w-[314px]  border-[#333333] rounded-lg h-[378px] m-[64px]">
               <h1 className="text-3xl pt-1 h-9"> Sign In</h1>
@@ -80,6 +82,7 @@ const Signin = () => {
           <p>
             "Welcome f"
             {username}
+            <Home />
           </p>
         </>
       )}

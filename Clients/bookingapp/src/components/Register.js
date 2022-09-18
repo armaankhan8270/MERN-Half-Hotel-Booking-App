@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useStateHotels } from "../context/Allapi";
 import Home from "./Home";
+import Signin from "./Signin";
 
 const Register = () => {
   const [username, setusername] = useState("");
@@ -49,15 +51,21 @@ const Register = () => {
             className="border- p-4 rounded-lg shadow-xl border-slate-600 w-80  "
             placeholder="email"
           />
-          <button
-            className="text-3xl w-44 rounded-lg bg-cyan-800 p-4 text-white"
-            onClick={Resgister}
-          >
-            Sign up
-          </button>
+          <div className="flex">
+            <button
+              className="text-3xl w-44 m-3 rounded-lg bg-cyan-800 p-4 text-white"
+              onClick={Resgister}
+            >
+              Sign up
+            </button>
+
+            <Link className="text-3xl mt-6 text-blue-900" to="/Signin">
+              Login
+            </Link>
+          </div>
         </div>
       ) : (
-        <Home />
+        <Signin />
       )}
 
       <h1>a{Error}</h1>

@@ -4,6 +4,7 @@ import { useStateHotels } from "./context/Allapi";
 import { useState } from "react";
 import Signin from "./components/Signin";
 import Register from "./components/Register";
+import Navbar from "./components/Navbar";
 function App() {
   const [username, setusername] = useState("");
   const [email, setemail] = useState("");
@@ -25,17 +26,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <button onClick={getdata}>{Data}sss</button> */}
-      {Hotel
-        ? Hotel.map((item, id) => {
-            return (
-              <div key={id}>
-                <img src={item.photos} alt={item.name} />
-              </div>
-            );
-          })
-        : "ee"}
-      <Signin />
+      <Navbar />
       <Register />
     </div>
   );
