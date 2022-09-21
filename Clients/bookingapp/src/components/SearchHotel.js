@@ -7,18 +7,22 @@ const SearchHotel = () => {
     axios
       .get(`http://localhost:3001/api/hotel/countByCity?cities=${Search}`)
       .then((data) => {
-        setHotelData(data.data[0]);
-        console.log(data.data[0]);
+        if (data.status == 200) {
+          setHotelData(data.data[0]);
+          console.log(data);
+        } else {
+          alert("No Hotels Found");
+        }
       })
       .catch((error) => {
         console.log(error);
+        alert("No Hotel Found");
       });
   };
   //   const result = HotelData.filter(Search);
 
   return (
     <div className="">
-      aaaaaaaaa
       <div className="flex  flex-row">
         <input
           placeholder="Search Hotel"
@@ -231,7 +235,7 @@ const SearchHotel = () => {
                 </div>
               );
             })
-          : "ee"}
+          : "No Hotel Found"}
       </div>
     </div>
   );

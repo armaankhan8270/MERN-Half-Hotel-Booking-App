@@ -45,7 +45,7 @@ export const GetAllHotel = async (req, res, next) => {
   //code for updating schema data into mongodb
   try {
     const AllHotels = await Hotel.find();
-    res.send(AllHotels);
+    res.status(201).send(AllHotels);
   } catch (err) {
     next(err);
   }
@@ -58,7 +58,7 @@ export const countByCity = async (req, res, next) => {
         return Hotel.find({ city: city });
       })
     );
-    res.status(200).json(list);
+    res.status(203).json(list);
   } catch (err) {
     next(err);
   }

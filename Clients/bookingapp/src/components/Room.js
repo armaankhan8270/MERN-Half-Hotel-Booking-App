@@ -1,14 +1,16 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useStateHotels } from "../context/Allapi";
 
 const Room = () => {
   const [HotelData, setHotelData] = useState([{}]);
+  const { rooms } = useStateHotels();
   const Registers = () => {
     axios
       .get(`http://localhost:3001/api/room`)
       .then((data) => {
         setHotelData(data.data);
-        console.log(data.data[0].title);
+        console.log(data.data[0]);
       })
       .catch((error) => {
         console.log(error);
@@ -26,7 +28,7 @@ const Room = () => {
                   {HotelData[0].title}
                 </h2>
                 <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">
-                  Animated Night Hill Illustrations
+                  {rooms.roomName}
                 </h1>
                 <div class="flex mb-4">
                   <a class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">
@@ -39,20 +41,18 @@ const Room = () => {
                     Details
                   </a>
                 </div>
-                <p class="leading-relaxed mb-4">
-                  Fam locavore kickstarter distillery. Mixtape chillwave tumeric
-                  sriracha taximy chia microdosing tilde DIY. XOXO fam inxigo
-                  juiceramps cornhole raw denim forage brooklyn. Everyday carry
-                  +1 seitan poutine tumeric. Gastropub blue bottle austin
-                  listicle pour-over, neutra jean.
-                </p>
+                <p class="leading-relaxed mb-4">{rooms.desc}</p>
                 <div class="flex border-t border-gray-200 py-2">
-                  <span class="text-gray-500">Color</span>
-                  <span class="ml-auto text-gray-900">Blue</span>
+                  <span class="text-gray-500">Rooms Available</span>
+                  <span class="ml-auto text-gray-900">
+                    {HotelData[0].title}
+                  </span>
                 </div>
                 <div class="flex border-t border-gray-200 py-2">
-                  <span class="text-gray-500">Size</span>
-                  <span class="ml-auto text-gray-900">Medium</span>
+                  <span class="text-gray-500">MAx Peopole</span>
+                  <span class="ml-auto text-gray-900">
+                    {HotelData[0].maxPepole}
+                  </span>
                 </div>
                 <div class="flex border-t border-b mb-6 border-gray-200 py-2">
                   <span class="text-gray-500">Quantity</span>
@@ -82,7 +82,7 @@ const Room = () => {
               <img
                 alt="ecommerce"
                 class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-                src="https://dummyimage.com/400x400"
+                src={rooms.roomImage}
               />
             </div>
           </div>

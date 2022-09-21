@@ -1,8 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useStateHotels } from "../context/Allapi";
 
 const Home = () => {
-  const { HotelData, setHotelData, getAllHotel } = useStateHotels();
+  const {
+    HotelData,
+    setHotelData,
+    getAllHotel,
+    Loginusername,
+    rooms,
+    setrooms,
+  } = useStateHotels();
 
   return (
     <div className="mt-20">
@@ -14,7 +22,9 @@ const Home = () => {
       </bttton>
 
       <div className="">
-        <h1 className="text-3xl text-center text-cyan-700">Welcome </h1>
+        <h1 className="text-3xl text-center text-cyan-700">
+          W{Loginusername}{" "}
+        </h1>
         {HotelData
           ? HotelData.map((HotelData, id) => {
               return (
@@ -185,8 +195,18 @@ const Home = () => {
                             <span class="title-font font-medium text-2xl text-gray-900">
                               ${HotelData.cheapestprice}
                             </span>
-                            <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-                              Book
+                            <button
+                              onClick={() => {
+                                setrooms({
+                                  roomName: HotelData.name,
+                                  roomImage: HotelData.photos,
+                                  address: HotelData.city,
+                                });
+                                console.log(rooms);
+                              }}
+                              class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                            >
+                              <Link to="/rooms">Book</Link>
                             </button>
                             <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                               <svg

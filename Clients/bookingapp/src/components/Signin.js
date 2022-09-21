@@ -12,7 +12,7 @@ const Signin = () => {
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
   const LoginInfo = { username, password };
-  const { IsLogin, setIsLogin } = useStateHotels();
+  const { IsLogin, setIsLogin, setLoginusername } = useStateHotels();
   const Login = async () => {
     axios
       .post("http://localhost:3001/api/auth/login", LoginInfo)
@@ -21,6 +21,7 @@ const Signin = () => {
 
         if (e.status == "201") {
           setIsLogin(true);
+          setLoginusername(e.data);
         }
       })
       .catch((e) => {

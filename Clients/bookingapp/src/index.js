@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Signin from "./components/Signin";
 import Navbar from "./components/Navbar";
 import Room from "./components/Room";
+import SearchHotel from "./components/SearchHotel";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,6 +23,7 @@ root.render(
         <Route path="/Home" element={<Home />} />
         <Route path="/Signin" element={<Signin />} />
         <Route path="/rooms" element={<Room />} />
+        <Route path="/SearchHotels" element={<SearchHotel />} />
       </Routes>
     </BrowserRouter>
   </StateHotels>

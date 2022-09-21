@@ -28,8 +28,11 @@ function App() {
   return (
     <div className="App">
       {/* <Register /> */}
-      <SearchHotel />
-      <button onClick={Resgisters}>GEt</button>
+      {/* <SearchHotel />
+       */}
+      <Navbar />
+      <Register />
+      {/* <button onClick={Resgisters}>GEt</button> */}
     </div>
   );
 }
