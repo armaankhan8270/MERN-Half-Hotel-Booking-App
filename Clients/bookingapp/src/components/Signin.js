@@ -18,11 +18,13 @@ const Signin = () => {
       .post("http://localhost:3001/api/auth/login", LoginInfo)
       .then((e) => {
         alert(e.data);
-        setIsLogin(true);
-      })
 
+        if (e.status == "201") {
+          setIsLogin(true);
+        }
+      })
       .catch((e) => {
-        alert(e.data);
+        alert(e);
       });
   };
 

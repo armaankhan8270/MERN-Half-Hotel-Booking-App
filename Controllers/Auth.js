@@ -20,7 +20,7 @@ export const Resgister = async (req, res, next) => {
 export const GetAllResgister = async (req, res, next) => {
   try {
     const AllUser = await User.find();
-    res.send(AllUser);
+    res.status(203).send(AllUser);
   } catch (err) {
     next(err.message);
   }
@@ -45,6 +45,7 @@ export const Login = async (req, res, next) => {
     );
     res
       .cookie("access_token", token, { httpOnly: true })
+      .status(201)
       .json("welcome" + " " + req.body.username);
   } catch (err) {
     next(err.message);

@@ -8,6 +8,7 @@ import Register from "./components/Register";
 import Home from "./components/Home";
 import Signin from "./components/Signin";
 import Navbar from "./components/Navbar";
+import Room from "./components/Room";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,6 +21,7 @@ root.render(
         <Route path="/register" element={<Register />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/Signin" element={<Signin />} />
+        <Route path="/rooms" element={<Room />} />
       </Routes>
     </BrowserRouter>
   </StateHotels>

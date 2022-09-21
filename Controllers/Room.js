@@ -20,3 +20,12 @@ export const GetRoom = async (req, res, next) => {
     next(err);
   }
 };
+export const GetOneRoom = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const AllRooms = await Rooms.findById(req.params.id);
+    res.send(AllRooms);
+  } catch (err) {
+    next(err);
+  }
+};
